@@ -1,5 +1,7 @@
 package com.marcoswinicios.jobs.entidades;
 
+import java.util.List;
+
 public class Empresa {
 	private Long id;
 	private String nome;
@@ -7,6 +9,7 @@ public class Empresa {
 	private String link;
 	private Cidade cidade;
 	private TamanhoEmpresa tamanho;
+	private List<Vaga> vagas;
 	
 	public Empresa() {}
 	
@@ -67,5 +70,8 @@ public class Empresa {
 	}
 	public void setTamanho(TamanhoEmpresa tamanho) {
 		this.tamanho = tamanho;
+	}
+	public List<Vaga> getVagas() {
+		return vagas;
 	}
 }
