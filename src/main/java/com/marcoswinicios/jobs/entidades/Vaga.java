@@ -1,5 +1,7 @@
 package com.marcoswinicios.jobs.entidades;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Vaga {
@@ -13,11 +15,17 @@ public class Vaga {
 	private List<Skills> skills; 	
 	private List<String> atividades;
 	private List<String> requisitos;
+	private BigDecimal salario;
+	private LocalDate dataCriacao;
+	private boolean ativa;
 	
 	public Vaga() {}
 	
+	
+
 	public Vaga(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
-			NivelExperiencia nivelExperiencia, List<Skills> skills, List<String> atividades, List<String> requisitos) {
+			NivelExperiencia nivelExperiencia, List<Skills> skills, List<String> atividades, List<String> requisitos,
+			BigDecimal salario, LocalDate dataCriacao, boolean ativa) {
 		super();
 		this.titulo = titulo;
 		this.remoto = remoto;
@@ -28,11 +36,16 @@ public class Vaga {
 		this.skills = skills;
 		this.atividades = atividades;
 		this.requisitos = requisitos;
+		this.salario = salario;
+		this.dataCriacao = dataCriacao;
+		this.ativa = ativa;
 	}
+
+
 
 	public Vaga(Long id, String titulo, boolean remoto, boolean aceitaDeFora, String descricao,
 			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skills> skills, List<String> atividades,
-			List<String> requisitos) {
+			List<String> requisitos, BigDecimal salario, LocalDate dataCriacao, boolean ativa) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -44,7 +57,12 @@ public class Vaga {
 		this.skills = skills;
 		this.atividades = atividades;
 		this.requisitos = requisitos;
+		this.salario = salario;
+		this.dataCriacao = dataCriacao;
+		this.ativa = ativa;
 	}
+
+		
 
 	public Long getId() {
 		return id;
@@ -96,5 +114,23 @@ public class Vaga {
 	}
 	public List<String> getRequisitos() {
 		return requisitos;
+	}
+	public BigDecimal getSalario() {
+		return salario;
+	}
+	public LocalDate getDataCriacao() {
+		return dataCriacao;
+	}
+	public boolean isAtiva() {
+		return ativa;
+	}
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+	public void setDataCriacao(LocalDate dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+	public void setAtiva(boolean ativa) {
+		this.ativa = ativa;
 	}
 }
