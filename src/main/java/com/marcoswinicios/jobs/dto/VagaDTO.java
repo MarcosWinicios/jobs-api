@@ -1,5 +1,8 @@
 package com.marcoswinicios.jobs.dto;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
@@ -7,7 +10,11 @@ import com.marcoswinicios.jobs.entidades.Skills;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
 import com.marcoswinicios.jobs.entidades.Vaga;
 
-public class VagaDTO {
+public class VagaDTO implements Serializable {
+	
+
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String titulo;
 	private boolean remoto;
@@ -18,7 +25,9 @@ public class VagaDTO {
 	private List<Skills> skills; 	
 	private List<String> atividades;
 	private List<String> requisitos;
-	
+	private BigDecimal salario;
+	private LocalDate dataCriacao;
+	private boolean ativa;
 	
 	public VagaDTO() {}
 	
@@ -33,6 +42,9 @@ public class VagaDTO {
 		this.skills =  vaga.getSkills();
 		this.atividades =  vaga.getAtividades();
 		this.requisitos = vaga.getRequisitos();
+		this.salario = vaga.getSalario();
+		this.dataCriacao = vaga.getDataCriacao();
+		this.ativa = vaga.isAtiva();
 	}
 	
 	public VagaDTO(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
@@ -122,5 +134,23 @@ public class VagaDTO {
 	}
 	public void setRequisitos(List<String> requisitos) {
 		this.requisitos = requisitos;
+	}
+	public boolean isAtiva() {
+		return ativa;
+	}
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+	public void setDataCriacao(LocalDate dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+	public void setAtiva(boolean ativa) {
+		this.ativa = ativa;
+	}
+	public BigDecimal getSalario() {
+		return salario;
+	}
+	public LocalDate getDataCriacao() {
+		return dataCriacao;
 	}
 }
