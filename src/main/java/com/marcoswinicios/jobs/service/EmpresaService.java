@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.marcoswinicios.jobs.EmpresaDTO;
+import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.entidades.Cidade;
 import com.marcoswinicios.jobs.entidades.Empresa;
 import com.marcoswinicios.jobs.entidades.TamanhoEmpresa;

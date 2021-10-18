@@ -1,4 +1,4 @@
-package com.marcoswinicios.jobs;
+package com.marcoswinicios.jobs.dto;
 
 import java.io.Serializable;
 
