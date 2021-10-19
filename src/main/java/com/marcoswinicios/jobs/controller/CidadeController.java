@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marcoswinicios.jobs.dto.CidadeDTO;
+
 import com.marcoswinicios.jobs.service.CidadeService;
 
 @RestController
@@ -23,8 +24,6 @@ public class CidadeController {
 	public ResponseEntity<List<CidadeDTO>> findAll(){
 		List<CidadeDTO> list = new ArrayList<>();
 		list = service.findAll();
-		System.out.println("\nCidades\n");
-		list.forEach(x -> System.out.println(x));
 		return ResponseEntity.ok(list);
 	}
 }

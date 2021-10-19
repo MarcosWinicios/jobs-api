@@ -18,8 +18,6 @@ public class CidadeService {
 	
 	public List<CidadeDTO> findAll(){
 		List<Cidade> result = repository.findAll();
-		System.out.println("\nCidades\n");
-		System.out.println(result);
 		return result
 				.stream()
 				.map(x -> new CidadeDTO(x)).collect(Collectors.toList());
