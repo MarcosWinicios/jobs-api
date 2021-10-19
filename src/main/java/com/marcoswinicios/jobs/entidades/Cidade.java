@@ -13,14 +13,14 @@ public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String cidade;
 	private String estado;
 	
 	
 	public Cidade() {}
 	
-	public Cidade(String nome, String estado) {
-		this.nome = nome;
+	public Cidade(String cidade, String estado) {
+		this.cidade = cidade;
 		this.estado = estado;
 	}
 	
@@ -31,10 +31,10 @@ public class Cidade {
 		this.id = id;
 	}
 	public String getNome() {
-		return nome;
+		return cidade;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.cidade = nome;
 	}
 	public String getEstado() {
 		return estado;

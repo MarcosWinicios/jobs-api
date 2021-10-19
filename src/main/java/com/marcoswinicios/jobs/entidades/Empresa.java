@@ -11,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.OnDelete;
 
 
 @Entity
@@ -35,7 +38,7 @@ public class Empresa {
 	@Enumerated(EnumType.STRING)
 	private TamanhoEmpresa tamanho;
 	
-	@Transient
+	@OneToMany(mappedBy = "empresa")
 	private List<Vaga> vagas;
 	
 	public Empresa() {}

@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,9 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -66,10 +63,12 @@ public class Vaga {
 	private LocalDate dataCriacao;
 	private boolean ativa;
 	
+	@ManyToOne
+	@JoinColumn(name = "empresa_id")
+	private Empresa empresa;
+	
 	public Vaga() {}
 	
-	
-
 	public Vaga(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
 			NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades, List<String> requisitos,
 			BigDecimal salario, LocalDate dataCriacao, boolean ativa) {
@@ -87,8 +86,6 @@ public class Vaga {
 		this.dataCriacao = dataCriacao;
 		this.ativa = ativa;
 	}
-
-
 
 	public Vaga(Long id, String titulo, boolean remoto, boolean aceitaDeFora, String descricao,
 			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades,
@@ -108,8 +105,6 @@ public class Vaga {
 		this.dataCriacao = dataCriacao;
 		this.ativa = ativa;
 	}
-
-		
 
 	public Long getId() {
 		return id;
