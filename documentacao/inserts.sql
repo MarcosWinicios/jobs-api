@@ -163,3 +163,61 @@ VALUES(
     'https://programathor.com.br/companies/15644',
     1
   );
+INSERT INTO
+  public.tb_vaga(
+    id,
+    aceita_de_fora,
+    ativa,
+    atividades,
+    data_cadastro,
+    nivel_experiencia,
+    remoto,
+    requisitos,
+    salario,
+    tipo_contrato,
+    titulo,
+    empresa_id
+  )
+VALUES
+  (
+    1,
+    true,
+    true,
+    'Desenvolvimento de software;Metodologia ágil;Horário flexível;Reunião quinzenal de Sprint (sextas-feiras);Reunião diária de Stand Up (seg-sex às 15h).',
+    2021 -10 -18,
+    'JUNIOR',
+    true,
+    'Formação em ensino superior ou técnico;Experiência nas linguagens informadas;Conhecimento em metodologias ágeis (Scrum/Kanban);',
+    3000,
+    CLT,
+    'Desenvolvedor(a) Front-End',
+    2
+  );
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (1, 2);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (1, 3);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (1, 8);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (1, 9);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(1, 2);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(1, 3);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(1, 4);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(1, 10);

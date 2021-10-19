@@ -43,9 +43,8 @@ public class Vaga {
 		inverseJoinColumns = @JoinColumn(name = "skill_id"))		
 	private List<Skill> skills;
 	
-	@Transient
 	private String atividades;
-	@Transient
+	
 	private String requisitos;
 	
 	@Column(precision = 10, scale = 2, nullable = true)
