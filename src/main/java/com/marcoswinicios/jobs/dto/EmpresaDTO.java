@@ -22,6 +22,7 @@ public class EmpresaDTO implements Serializable {
 	
 	
 	public EmpresaDTO(Empresa empresa) {
+		this.id = empresa.getId();
 		this.nome = empresa.getNome();
 		this.descricao =  empresa.getDescricao();
 		this.link = empresa.getLink();

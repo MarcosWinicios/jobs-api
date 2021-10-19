@@ -20,7 +20,7 @@ public class EmpresaController {
 	
 	@GetMapping
 	public ResponseEntity<List<EmpresaDTO>> findAll(){
-		List<EmpresaDTO> empresas = service.listarTodas();
+		List<EmpresaDTO> empresas = service.findAll();
 		return ResponseEntity.ok(empresas);
 	}
 }

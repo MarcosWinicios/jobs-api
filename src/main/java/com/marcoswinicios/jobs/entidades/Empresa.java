@@ -14,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tb_empresa")
@@ -26,6 +27,8 @@ public class Empresa {
 	private String nome;
 	
 	@Lob
+	@Column(length = 10485760)
+	@Transient
 	private String descricao;
 	private String link;
 	

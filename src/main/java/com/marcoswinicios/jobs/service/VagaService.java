@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marcoswinicios.jobs.dto.VagaDTO;
@@ -13,10 +15,22 @@ import com.marcoswinicios.jobs.entidades.NivelExperiencia;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
 import com.marcoswinicios.jobs.entidades.Vaga;
+import com.marcoswinicios.jobs.repository.VagaRepository;
 
 @Service
 public class VagaService {
 	
+	@Autowired
+	private VagaRepository repository;
+	
+	
+	public List<VagaDTO> findAll(){
+		List<Vaga> result = repository.findAll();
+		return result
+				.stream()
+				.map(x -> new VagaDTO(x))
+				.collect(Collectors.toList());
+	}
 	
 	public List<VagaDTO> listarTodas(){
 		List<VagaDTO> vagas = new ArrayList<>();
@@ -115,4 +129,6 @@ public class VagaService {
 		vagas.add(new VagaDTO(vaga2));
 		return vagas;
 	}
+	
+	
 }

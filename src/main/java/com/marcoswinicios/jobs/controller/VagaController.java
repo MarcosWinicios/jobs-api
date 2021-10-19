@@ -20,7 +20,7 @@ public class VagaController {
 	
 	@GetMapping
 	public ResponseEntity<List<VagaDTO>> findAll(){
-		List<VagaDTO> vagas =  service.listarTodas();
+		List<VagaDTO> vagas =  service.findAll();
 		
 		return ResponseEntity.ok(vagas);
 	}
