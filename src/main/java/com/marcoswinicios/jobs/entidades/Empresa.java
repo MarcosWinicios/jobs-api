@@ -14,10 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.hibernate.annotations.OnDelete;
-
 
 @Entity
 @Table(name = "tb_empresa")
@@ -46,7 +42,6 @@ public class Empresa {
 	
 	public Empresa() {}
 	
-	
 	public Empresa(String nome, String descricao, String link, Cidade cidade, TamanhoEmpresa tamanho) {
 		super();
 		this.nome = nome;
@@ -55,7 +50,6 @@ public class Empresa {
 		this.cidade = cidade;
 		this.tamanho = tamanho;
 	}
-
 
 	public Empresa(Long id, String nome, String descricao, String link, Cidade cidade, TamanhoEmpresa tamanho) {
 		super();
@@ -66,7 +60,6 @@ public class Empresa {
 		this.cidade = cidade;
 		this.tamanho = tamanho;
 	}
-
 
 	public Long getId() {
 		return id;
