@@ -45,7 +45,7 @@ public class Vaga {
 //	private List<Skill> skills; 
 	
 	@ManyToMany
-	@JoinTable(name = "vaga_skill",
+	@JoinTable(name = "tb_vaga_skill",
 		joinColumns = @JoinColumn(name ="vaga_id"),
 		inverseJoinColumns = @JoinColumn(name = "skill_id"))		
 	private List<Skill> skills;

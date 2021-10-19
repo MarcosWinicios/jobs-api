@@ -1,5 +1,6 @@
 package com.marcoswinicios.jobs.entidades;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Cidade {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(columnDefinition = "serial")
 	private Long id;
 	private String cidade;
 	private String estado;
