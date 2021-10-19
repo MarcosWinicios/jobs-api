@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -43,8 +44,10 @@ public class Vaga {
 		inverseJoinColumns = @JoinColumn(name = "skill_id"))		
 	private List<Skill> skills;
 	
+	@Lob
 	private String atividades;
 	
+	@Lob
 	private String requisitos;
 	
 	@Column(precision = 10, scale = 2, nullable = true)

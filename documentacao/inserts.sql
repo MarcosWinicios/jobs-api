@@ -77,6 +77,14 @@ INSERT INTO
 VALUES
   (12, 'Angular');
 INSERT INTO
+  tb_skill(id, nome)
+VALUES
+  (13, 'Android');
+INSERT INTO
+  tb_skill(id, nome)
+VALUES
+  (14, 'IOS');
+INSERT INTO
   tb_beneficio(id, nome)
 VALUES(1, 'Outros');
 INSERT INTO
@@ -184,12 +192,12 @@ VALUES
     true,
     true,
     'Desenvolvimento de software;Metodologia ágil;Horário flexível;Reunião quinzenal de Sprint (sextas-feiras);Reunião diária de Stand Up (seg-sex às 15h).',
-    2021 -10 -18,
+    '2021-10-18',
     'JUNIOR',
     true,
     'Formação em ensino superior ou técnico;Experiência nas linguagens informadas;Conhecimento em metodologias ágeis (Scrum/Kanban);',
     3000,
-    CLT,
+    'CLT',
     'Desenvolvedor(a) Front-End',
     2
   );
@@ -221,3 +229,67 @@ VALUES(1, 4);
 INSERT INTO
   tb_vaga_skill(vaga_id, skill_id)
 VALUES(1, 10);
+INSERT INTO
+  public.tb_vaga(
+    id,
+    aceita_de_fora,
+    ativa,
+    atividades,
+    data_cadastro,
+    nivel_experiencia,
+    remoto,
+    requisitos,
+    salario,
+    tipo_contrato,
+    titulo,
+    empresa_id
+  )
+VALUES
+  (
+    2,
+    true,
+    true,
+    'Análise, desenvolvimento, teste e implantação dos aplicativos para Android e IOS tanto no Front-End(Angular/Ionic) quanto no Back-End( C#/SQL Server );Manutenção dos serviços utilizado pelos aplicativos;Publicação de aplicativos nas lojas correspondentes.',
+    '2021-09-29',
+    'PLENO',
+    false,
+    'Formação em ensino superior ou técnico;Experiência prévia nas linguagens informadas;Inglês Intermediário;Experiência com ferramentas de versionamento de código (GIT,...);Habilidades interpessoais de escrita e de comunicação verbal;Conhecimento em metodologias ágeis (Scrum/Kanban);Necessário experiência comprovada em mobile no desenvolvimento de aplicações híbridas com framework Ionic (apresentar portfólio);',
+    null,
+    'CLT PJ',
+    'Desenvolvedor(a) Fullstack',
+    1
+  );
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (2, 2);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (2, 3);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (2, 8);
+INSERT INTO
+  tb_beneficio_vaga(vaga_id, beneficio_id)
+VALUES
+  (2, 9);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 2);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 3);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 4);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 10);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 13);
+INSERT INTO
+  tb_vaga_skill(vaga_id, skill_id)
+VALUES(2, 14);
