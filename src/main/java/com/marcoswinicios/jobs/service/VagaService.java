@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.marcoswinicios.jobs.dto.VagaDTO;
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
-import com.marcoswinicios.jobs.entidades.Skills;
+import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
 import com.marcoswinicios.jobs.entidades.Vaga;
 
@@ -19,14 +19,15 @@ public class VagaService {
 	
 	public List<VagaDTO> listarTodas(){
 		List<VagaDTO> vagas = new ArrayList<>();
-		List<Skills> skills = new ArrayList<>();
+		List<Skill> skills = new ArrayList<>();
 		List<String> atividades = new ArrayList<>();
 		List<String> requisitos = new ArrayList<>();
 		
-		skills.add(Skills.JAVA);
-		skills.add(Skills.JPA);
-		skills.add(Skills.MYSQL);
-		skills.add(Skills.SPRING_BOOT);
+	
+		skills.add(new Skill(1L, "Java"));
+		skills.add(new Skill(2L, "JPA"));
+		skills.add(new Skill(3L, "MySQL"));
+		skills.add(new Skill(4L, "Spring Boot"));
 		
 		atividades.add("Criar novas Funcionalidades");
 		atividades.add("Resolver Bugs");
@@ -52,11 +53,11 @@ public class VagaService {
 				LocalDate.now(),
 				true				
 		);
-		List<Skills> skills2 = new ArrayList<>();
-		skills2.add(Skills.HTML);
-		skills2.add(Skills.CSS);
-		skills2.add(Skills.JAVASCRIPT);
-		skills2.add(Skills.REACT);
+		List<Skill> skills2 = new ArrayList<>();
+		skills2.add(new Skill(5L, "HTML"));
+		skills2.add(new Skill(6L, "CSS"));
+		skills2.add(new Skill(7L, "Javascrip"));
+		skills2.add(new Skill(8L, "React"));
 		
 		List<String> atividades2 = new ArrayList<>();
 		

@@ -16,7 +16,7 @@ public class EmpresaService {
 	
 	public List<EmpresaDTO> listarTodas() {
 		List<EmpresaDTO> empresas = new ArrayList<>();
-		Cidade cidade = new Cidade("São Paulo");
+		Cidade cidade = new Cidade("São Paulo", "SP");
 		cidade.setId(1L);
 		EmpresaDTO empresa =  new EmpresaDTO(new Empresa(1L,"SuperSim", "Descrição desta empresa Supersim", "https://supersim.com", cidade, TamanhoEmpresa.GRANDE_EMPRESA));
 		empresa.setId(1L);

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
-import com.marcoswinicios.jobs.entidades.Skills;
+import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
 import com.marcoswinicios.jobs.entidades.Vaga;
 
@@ -22,7 +22,7 @@ public class VagaDTO implements Serializable {
 	private String descricao;
 	private TipoContrato tipoContrato;
 	private NivelExperiencia nivelExperiencia;
-	private List<Skills> skills; 	
+	private List<Skill> skills; 	
 	private List<String> atividades;
 	private List<String> requisitos;
 	private BigDecimal salario;
@@ -48,7 +48,7 @@ public class VagaDTO implements Serializable {
 	}
 	
 	public VagaDTO(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
-			NivelExperiencia nivelExperiencia, List<Skills> skills, List<String> atividades, List<String> requisitos) {
+			NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades, List<String> requisitos) {
 		super();
 		this.titulo = titulo;
 		this.remoto = remoto;
@@ -61,7 +61,7 @@ public class VagaDTO implements Serializable {
 		this.requisitos = requisitos;
 	}
 	public VagaDTO(Long id, String titulo, boolean remoto, boolean aceitaDeFora, String descricao,
-			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skills> skills, List<String> atividades,
+			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades,
 			List<String> requisitos) {
 		super();
 		this.id = id;
@@ -117,11 +117,11 @@ public class VagaDTO implements Serializable {
 	public void setNivelExperiencia(NivelExperiencia nivelExperiencia) {
 		this.nivelExperiencia = nivelExperiencia;
 	}
-	public List<Skills> getSkills() {
+	public List<Skill> getSkills() {
 		return skills;
 	}
-	public void setSkills(List<Skills> skills) {
-		this.skills = skills;
+	public void setSkills(List<Skill> string) {
+		this.skills = string;
 	}
 	public List<String> getAtividades() {
 		return atividades;

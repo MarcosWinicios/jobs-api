@@ -7,23 +7,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_cidade")
-public class Cidade {
+@Table(name = "tb_skill")
+public class Skill {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String estado;
 	
+	public Skill() {}
 	
-	public Cidade() {}
-	
-	public Cidade(String nome, String estado) {
+	public Skill(Long id, String nome) {
+		this.id = id;
 		this.nome = nome;
-		this.estado = estado;
 	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -35,11 +32,5 @@ public class Cidade {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 }
