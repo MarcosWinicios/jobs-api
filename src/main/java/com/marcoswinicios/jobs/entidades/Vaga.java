@@ -28,7 +28,6 @@ public class Vaga {
 	private String titulo;
 	private boolean remoto;
 	private boolean aceitaDeFora;
-	private String descricao;
 	
 	@Column(name = "tipoContrato", nullable = false)
 	@Enumerated(EnumType.STRING)
@@ -38,12 +37,6 @@ public class Vaga {
 	@Enumerated(EnumType.STRING)
 	private NivelExperiencia nivelExperiencia;
 	
-//	@ElementCollection
-//	@CollectionTable(name = "tb_skill_vaga",
-//			joinColumns = @JoinColumn(name ="vaga_id"))
-//	@Column(name = "id_skill", nullable = false)
-//	private List<Skill> skills; 
-	
 	@ManyToMany
 	@JoinTable(name = "tb_vaga_skill",
 		joinColumns = @JoinColumn(name ="vaga_id"),
@@ -51,13 +44,18 @@ public class Vaga {
 	private List<Skill> skills;
 	
 	@Transient
-	private List<String> atividades;
+	private String atividades;
 	@Transient
-	private List<String> requisitos;
+	private String requisitos;
 	
 	@Column(precision = 10, scale = 2, nullable = true)
 	private BigDecimal salario;
 	
+	@ManyToMany
+	@JoinTable(name = "tb_beneficio_vaga", 
+		joinColumns = @JoinColumn(name = "vaga_id"),
+		inverseJoinColumns = @JoinColumn(name = "beneficio_id"))
+	private List<Beneficio> beneficios;
 	
 	@Column(name = "dataCadastro", nullable = false)
 	private LocalDate dataCriacao;
@@ -69,14 +67,13 @@ public class Vaga {
 	
 	public Vaga() {}
 	
-	public Vaga(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
-			NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades, List<String> requisitos,
-			BigDecimal salario, LocalDate dataCriacao, boolean ativa) {
+	public Vaga(String titulo, boolean remoto, boolean aceitaDeFora, TipoContrato tipoContrato,
+			NivelExperiencia nivelExperiencia, List<Skill> skills, String atividades, String requisitos,
+			BigDecimal salario, LocalDate dataCriacao, boolean ativa, List<Beneficio> beneficios) {
 		super();
 		this.titulo = titulo;
 		this.remoto = remoto;
 		this.aceitaDeFora = aceitaDeFora;
-		this.descricao = descricao;
 		this.tipoContrato = tipoContrato;
 		this.nivelExperiencia = nivelExperiencia;
 		this.skills = skills;
@@ -85,17 +82,17 @@ public class Vaga {
 		this.salario = salario;
 		this.dataCriacao = dataCriacao;
 		this.ativa = ativa;
+		this.beneficios = beneficios;
 	}
 
-	public Vaga(Long id, String titulo, boolean remoto, boolean aceitaDeFora, String descricao,
-			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades,
-			List<String> requisitos, BigDecimal salario, LocalDate dataCriacao, boolean ativa) {
+	public Vaga(Long id, String titulo, boolean remoto, boolean aceitaDeFora,
+			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skill> skills, String atividades,
+			String requisitos, BigDecimal salario, LocalDate dataCriacao, boolean ativa, List<Beneficio> beneficios) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.remoto = remoto;
 		this.aceitaDeFora = aceitaDeFora;
-		this.descricao = descricao;
 		this.tipoContrato = tipoContrato;
 		this.nivelExperiencia = nivelExperiencia;
 		this.skills = skills;
@@ -104,6 +101,7 @@ public class Vaga {
 		this.salario = salario;
 		this.dataCriacao = dataCriacao;
 		this.ativa = ativa;
+		this.beneficios = beneficios;
 	}
 
 	public Long getId() {
@@ -130,12 +128,6 @@ public class Vaga {
 	public void setAceitaDeFora(boolean aceitaDeFora) {
 		this.aceitaDeFora = aceitaDeFora;
 	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 	public TipoContrato getTipoContrato() {
 		return tipoContrato;
 	}
@@ -150,12 +142,6 @@ public class Vaga {
 	}
 	public List<Skill> getSkills() {
 		return this.skills;
-	}
-	public List<String> getAtividades() {
-		return atividades;
-	}
-	public List<String> getRequisitos() {
-		return requisitos;
 	}
 	public BigDecimal getSalario() {
 		return salario;
@@ -174,5 +160,20 @@ public class Vaga {
 	}
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
+	}
+	public List<Beneficio> getBeneficios() {
+		return beneficios;
+	}
+	public String getAtividades() {
+		return atividades;
+	}
+	public void setAtividades(String atividades) {
+		this.atividades = atividades;
+	}
+	public String getRequisitos() {
+		return requisitos;
+	}
+	public void setRequisitos(String requisitos) {
+		this.requisitos = requisitos;
 	}
 }

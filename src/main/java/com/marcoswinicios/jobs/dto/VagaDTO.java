@@ -3,8 +3,10 @@ package com.marcoswinicios.jobs.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.marcoswinicios.jobs.entidades.Beneficio;
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
@@ -28,6 +30,7 @@ public class VagaDTO implements Serializable {
 	private BigDecimal salario;
 	private LocalDate dataCriacao;
 	private boolean ativa;
+	private List<Beneficio> beneficios;
 	
 	public VagaDTO() {}
 	
@@ -36,15 +39,31 @@ public class VagaDTO implements Serializable {
 		this.titulo =  vaga.getTitulo();
 		this.remoto = vaga.isRemoto();
 		this.aceitaDeFora = vaga.isAceitaDeFora();
-		this.descricao =  vaga.getDescricao();
 		this.tipoContrato = vaga.getTipoContrato();
 		this.nivelExperiencia = vaga.getNivelExperiencia();
 		this.skills =  vaga.getSkills();
-		this.atividades =  vaga.getAtividades();
-		this.requisitos = vaga.getRequisitos();
 		this.salario = vaga.getSalario();
 		this.dataCriacao = vaga.getDataCriacao();
 		this.ativa = vaga.isAtiva();
+		this.beneficios = vaga.getBeneficios();
+		
+		String[] atividades = vaga.getAtividades().split(";");
+		this.separarAtividades(atividades);
+		
+		String[] requisitos = vaga.getRequisitos().split(";");
+		this.separarRequisitos(requisitos);
+	}
+	private void separarAtividades(String[] atividades) {
+		this.atividades = new ArrayList<>();
+		for(String atividade : atividades) {
+			this.atividades.add(atividade);
+		}
+	}
+	private void separarRequisitos(String[] requisitos) {
+		this.requisitos = new ArrayList<>();
+		for(String requisito : requisitos) {
+			this.requisitos.add(requisito);
+		}
 	}
 	
 	public VagaDTO(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
@@ -152,5 +171,11 @@ public class VagaDTO implements Serializable {
 	}
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
+	}
+	public List<Beneficio> getBeneficios() {
+		return beneficios;
+	}
+	public void setBeneficios(List<Beneficio> beneficios) {
+		this.beneficios = beneficios;
 	}
 }

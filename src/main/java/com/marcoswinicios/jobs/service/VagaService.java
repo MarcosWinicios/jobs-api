@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.marcoswinicios.jobs.dto.VagaDTO;
+import com.marcoswinicios.jobs.entidades.Beneficio;
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
@@ -20,8 +21,9 @@ public class VagaService {
 	public List<VagaDTO> listarTodas(){
 		List<VagaDTO> vagas = new ArrayList<>();
 		List<Skill> skills = new ArrayList<>();
-		List<String> atividades = new ArrayList<>();
-		List<String> requisitos = new ArrayList<>();
+		List<String> listAtividades = new ArrayList<>();
+		List<String> listRequisitos = new ArrayList<>();
+		List<Beneficio> beneficios =  new ArrayList<>();
 		
 	
 		skills.add(new Skill(1L, "Java"));
@@ -29,21 +31,33 @@ public class VagaService {
 		skills.add(new Skill(3L, "MySQL"));
 		skills.add(new Skill(4L, "Spring Boot"));
 		
-		atividades.add("Criar novas Funcionalidades");
-		atividades.add("Resolver Bugs");
-		atividades.add("Fazer levantamento de requisitos");
+		listAtividades.add("Criar novas Funcionalidades");
+		listAtividades.add("Resolver Bugs");
+		listAtividades.add("Fazer levantamento de requisitos");
 		
-		requisitos.add("Conhecimento em Java");
-		requisitos.add("Conhecimento em Bancos de dados Relacionais (MySQL)");
-		requisitos.add("Conhecimento JPA");
-		requisitos.add("Conhecimento em Spring Boot");
+		listRequisitos.add("Conhecimento em Java");
+		listRequisitos.add("Conhecimento em Bancos de dados Relacionais (MySQL)");
+		listRequisitos.add("Conhecimento JPA");
+		listRequisitos.add("Conhecimento em Spring Boot");
 		
+		beneficios.add(new Beneficio(1L, "Vale Refeição"));
+		beneficios.add(new Beneficio(1L, "Vale Transporte"));
+		beneficios.add(new Beneficio(1L, "Plano de Saúde"));
+		beneficios.add(new Beneficio(1L, "Seguro de Vida"));
+		
+		String atividades =  new String();
+		for(String str : listAtividades) {
+			atividades += str + ";";
+		}
+		String requisitos =  new String();
+		for(String str : listRequisitos) {
+			requisitos +=  str + ";";
+		}
 		Vaga vaga = new Vaga(
 				1L, 
 				"Desenvolvedor Java",
 				true, 
 				true,
-				"Buscamos pessoas responsáveis, que estão em busca de crescimento",
 				TipoContrato.CLT,
 				NivelExperiencia.JUNIOR,
 				skills,
@@ -51,7 +65,8 @@ public class VagaService {
 				requisitos,
 				new BigDecimal("3000.00"),
 				LocalDate.now(),
-				true				
+				true,
+				beneficios
 		);
 		List<Skill> skills2 = new ArrayList<>();
 		skills2.add(new Skill(5L, "HTML"));
@@ -59,25 +74,32 @@ public class VagaService {
 		skills2.add(new Skill(7L, "Javascrip"));
 		skills2.add(new Skill(8L, "React"));
 		
-		List<String> atividades2 = new ArrayList<>();
+		List<String> listAtividades2 = new ArrayList<>();
 		
-		atividades2.add("Desenvolver páginas Responsíveis");
-		atividades2.add("Boas práticas de codificação");
-		atividades2.add("Correção de erros em projetos existentes");
+		listAtividades2.add("Desenvolver páginas Responsíveis");
+		listAtividades2.add("Boas práticas de codificação");
+		listAtividades2.add("Correção de erros em projetos existentes");
 		
-		List<String> requisitos2 = new ArrayList<>();
+		List<String> listRequisitos2 = new ArrayList<>();
 		
-		requisitos2.add("Conhecimento em HTML Semântico");
-		requisitos2.add("Conhecimento em React JS");
-		requisitos2.add("Conhecimento em Animações");
+		listRequisitos2.add("Conhecimento em HTML Semântico");
+		listRequisitos2.add("Conhecimento em React JS");
+		listRequisitos2.add("Conhecimento em Animações");
 		
+		String atividades2 =  new String();
+		for(String str : listAtividades) {
+			atividades2 += str + ";";
+		}
+		String requisitos2 =  new String();
+		for(String str : listRequisitos) {
+			requisitos2 +=  str + ";";
+		}
 		
 		Vaga vaga2 = new Vaga(
 				2L, 
 				"Desenvolvedor Front-end",
 				true, 
 				true,
-				"Buscamos pessoas criativas deticadas e inovadoras",
 				TipoContrato.CLT,
 				NivelExperiencia.PLENO,
 				skills2,
@@ -85,7 +107,8 @@ public class VagaService {
 				requisitos2,
 				new BigDecimal("5000.00"),
 				LocalDate.now(),
-				true				
+				true,
+				beneficios
 		);
 		
 		vagas.add(new VagaDTO(vaga));
