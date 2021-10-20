@@ -26,9 +26,8 @@ public class Empresa {
 	
 	private String nome;
 	
-	@Lob
-	@Column(length = 10485760)
-	@Transient
+	
+	@Column(columnDefinition = "text")
 	private String descricao;
 	private String link;
 	
