@@ -43,10 +43,10 @@ public class Vaga {
 		inverseJoinColumns = @JoinColumn(name = "skill_id"))		
 	private List<Skill> skills;
 	
-	@Lob
+	@Column(columnDefinition = "text")
 	private String atividades;
 	
-	@Lob
+	@Column(columnDefinition = "text")
 	private String requisitos;
 	
 	@Column(precision = 10, scale = 2, nullable = true)

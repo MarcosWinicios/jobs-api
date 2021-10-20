@@ -21,7 +21,6 @@ public class VagaDTO implements Serializable {
 	private String titulo;
 	private boolean remoto;
 	private boolean aceitaDeFora;
-	private String descricao;
 	private TipoContrato tipoContrato;
 	private NivelExperiencia nivelExperiencia;
 	private List<Skill> skills; 	
@@ -66,20 +65,19 @@ public class VagaDTO implements Serializable {
 		}
 	}
 	
-	public VagaDTO(String titulo, boolean remoto, boolean aceitaDeFora, String descricao, TipoContrato tipoContrato,
+	public VagaDTO(String titulo, boolean remoto, boolean aceitaDeFora, TipoContrato tipoContrato,
 			NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades, List<String> requisitos) {
 		super();
 		this.titulo = titulo;
 		this.remoto = remoto;
 		this.aceitaDeFora = aceitaDeFora;
-		this.descricao = descricao;
 		this.tipoContrato = tipoContrato;
 		this.nivelExperiencia = nivelExperiencia;
 		this.skills = skills;
 		this.atividades = atividades;
 		this.requisitos = requisitos;
 	}
-	public VagaDTO(Long id, String titulo, boolean remoto, boolean aceitaDeFora, String descricao,
+	public VagaDTO(Long id, String titulo, boolean remoto, boolean aceitaDeFora,
 			TipoContrato tipoContrato, NivelExperiencia nivelExperiencia, List<Skill> skills, List<String> atividades,
 			List<String> requisitos) {
 		super();
@@ -87,7 +85,6 @@ public class VagaDTO implements Serializable {
 		this.titulo = titulo;
 		this.remoto = remoto;
 		this.aceitaDeFora = aceitaDeFora;
-		this.descricao = descricao;
 		this.tipoContrato = tipoContrato;
 		this.nivelExperiencia = nivelExperiencia;
 		this.skills = skills;
@@ -117,12 +114,6 @@ public class VagaDTO implements Serializable {
 	}
 	public void setAceitaDeFora(boolean aceitaDeFora) {
 		this.aceitaDeFora = aceitaDeFora;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 	public TipoContrato getTipoContrato() {
 		return tipoContrato;
