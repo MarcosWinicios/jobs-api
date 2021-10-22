@@ -7,6 +7,4 @@ import com.marcoswinicios.jobs.entidades.Cidade;
 
 public interface CidadeRepository extends JpaRepository<Cidade, Long>{
 
-	
-
 }
