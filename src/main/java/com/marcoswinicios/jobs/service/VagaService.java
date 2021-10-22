@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.marcoswinicios.jobs.dto.VagaDTO;
@@ -18,13 +20,13 @@ import com.marcoswinicios.jobs.entidades.Vaga;
 import com.marcoswinicios.jobs.repository.VagaRepository;
 
 @Service
-public class VagaService {
+public class VagaService implements Services<VagaDTO> {
 	
 	@Autowired
 	private VagaRepository repository;
 	
 	
-	public List<VagaDTO> findAll(){
+	public List<VagaDTO> findAlll(){
 		List<Vaga> result = repository.findAll();
 		return result
 				.stream()
@@ -128,6 +130,13 @@ public class VagaService {
 		vagas.add(new VagaDTO(vaga));
 		vagas.add(new VagaDTO(vaga2));
 		return vagas;
+	}
+
+	@Override
+	public Page<VagaDTO> findAll(Pageable pageable) {
+		Page<Vaga> result = repository.findAll(pageable);
+		return result.map(x -> new VagaDTO(x));
+		
 	}
 	
 	
