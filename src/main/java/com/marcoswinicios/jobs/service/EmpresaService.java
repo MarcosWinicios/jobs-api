@@ -1,34 +1,24 @@
 package com.marcoswinicios.jobs.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import com.marcoswinicios.jobs.dto.CidadeDTO;
 import com.marcoswinicios.jobs.dto.EmpresaDTO;
-import com.marcoswinicios.jobs.entidades.Cidade;
 import com.marcoswinicios.jobs.entidades.Empresa;
-import com.marcoswinicios.jobs.entidades.TamanhoEmpresa;
 import com.marcoswinicios.jobs.repository.EmpresaRepository;
 
 @Service
-public class EmpresaService {
+public class EmpresaService implements Services<EmpresaDTO> {
 	
 	@Autowired
 	private EmpresaRepository repository;
 	
-	public List<EmpresaDTO> findAll(){
-		List<Empresa> result = repository.findAll();
-		
-		return result
-				.stream()
-				.map(x -> new EmpresaDTO(x))
-				.collect(Collectors.toList());
+	@Override
+	public Page<EmpresaDTO> findAll(Pageable pageable) {
+		Page<Empresa> result = repository.findAll(pageable);
+		return result.map(x -> new EmpresaDTO(x));
 	}
 	
 //	public EmpresaDTO findById(Long id) {
