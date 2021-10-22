@@ -4,6 +4,6 @@ import java.awt.print.Pageable;
 
 import org.springframework.data.domain.Page;
 
-public interface Services{
-	public Page<Object> findAll(Pageable pageable);
+public interface Services<T>{
+	public Page<T> findAll(Pageable pageable);
 }

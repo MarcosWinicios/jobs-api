@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +30,7 @@ public class CidadeService{
 	}
 
 
-	public Page<CidadeDTO> findAll(Pageable pageable) {
+	public Page<CidadeDTO> findAll(org.springframework.data.domain.Pageable pageable) {
 		Page<Cidade> result = repository.findAll(pageable);
 		
 		return result.map(x -> new CidadeDTO());
