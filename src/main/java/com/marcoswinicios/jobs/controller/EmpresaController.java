@@ -15,6 +15,7 @@ import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.entidades.Empresa;
 import com.marcoswinicios.jobs.repository.EmpresaRepository;
 import com.marcoswinicios.jobs.service.EmpresaService;
+import com.marcoswinicios.jobs.service.VagaService;
 
 @RestController
 @RequestMapping(value = "/empresas")
@@ -24,6 +25,9 @@ public class EmpresaController implements Controllers<EmpresaDTO> {
 	private EmpresaService service;
 	@Autowired
 	private EmpresaRepository repository;
+	
+	@Autowired
+	private VagaService vagaService;
 	
 	@Override
 	public ResponseEntity<Page<EmpresaDTO>> findAll(Pageable page) {
@@ -42,7 +46,10 @@ public class EmpresaController implements Controllers<EmpresaDTO> {
 	
 	@GetMapping("/vaga/{idVaga}")
 	public ResponseEntity<EmpresaDTO> findByVaga(@PathVariable Long idVaga){
-		EmpresaDTO empresa = service.findByVaga(idVaga);
-		return ResponseEntity.ok(empresa);
+		if(vagaService.existsById(idVaga)) {
+			EmpresaDTO empresa = service.findByVaga(idVaga);
+			return ResponseEntity.ok(empresa);
+		}
+		return ResponseEntity.notFound().build();
 	}
 }

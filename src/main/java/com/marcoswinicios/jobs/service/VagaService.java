@@ -25,6 +25,9 @@ public class VagaService implements Services<VagaDTO> {
 	@Autowired
 	private VagaRepository repository;
 	
+	public boolean existsById(Long id) {
+		return repository.existsById(id);
+	}
 	
 	public List<VagaDTO> findAlll(){
 		List<Vaga> result = repository.findAll();
