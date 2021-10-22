@@ -138,6 +138,12 @@ public class VagaService implements Services<VagaDTO> {
 		return result.map(x -> new VagaDTO(x));
 		
 	}
+
+	@Override
+	public VagaDTO findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

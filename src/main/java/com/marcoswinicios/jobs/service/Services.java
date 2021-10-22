@@ -5,4 +5,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface Services<T>{
 	public Page<T> findAll(Pageable pageable);
+	
+	public T findById(Long id);
 }

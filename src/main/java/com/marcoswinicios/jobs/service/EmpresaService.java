@@ -1,9 +1,12 @@
 package com.marcoswinicios.jobs.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.entidades.Empresa;
@@ -19,6 +22,16 @@ public class EmpresaService implements Services<EmpresaDTO> {
 	public Page<EmpresaDTO> findAll(Pageable pageable) {
 		Page<Empresa> result = repository.findAll(pageable);
 		return result.map(x -> new EmpresaDTO(x));
+	}
+
+	@Override
+	public EmpresaDTO findById(Long id) {
+		Optional<Empresa> empresa = repository.findById(id);
+		if(empresa.isPresent()) {
+			
+			return new EmpresaDTO(empresa.get());
+		}
+		return null;
 	}
 	
 //	public EmpresaDTO findById(Long id) {

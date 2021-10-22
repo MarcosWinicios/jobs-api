@@ -24,4 +24,10 @@ public class VagaController implements Controllers<VagaDTO>{
 		
 		return ResponseEntity.ok(list);
 	}
+
+	@Override
+	public ResponseEntity<VagaDTO> findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

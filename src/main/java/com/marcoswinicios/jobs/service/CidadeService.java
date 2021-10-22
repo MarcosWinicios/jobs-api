@@ -21,4 +21,10 @@ public class CidadeService implements Services<CidadeDTO>{
 		Page<Cidade> result = repository.findAll(pageable);
 		return result.map(x -> new CidadeDTO(x));
 	}
+
+	@Override
+	public CidadeDTO findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
