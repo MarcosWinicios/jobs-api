@@ -34,6 +34,8 @@ public class VagaDTO implements Serializable {
 	private boolean ativa;
 	private List<Beneficio> beneficios;
 	private Long idEmpresa;
+	private String cidade;
+	
 	public VagaDTO() {}
 	
 	public VagaDTO(Vaga vaga) {
@@ -178,5 +180,12 @@ public class VagaDTO implements Serializable {
 	}
 	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 }

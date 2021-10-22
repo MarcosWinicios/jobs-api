@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.dto.VagaDTO;
+import com.marcoswinicios.jobs.entidades.Empresa;
 import com.marcoswinicios.jobs.entidades.Vaga;
 import com.marcoswinicios.jobs.repository.VagaRepository;
 import com.marcoswinicios.jobs.service.EmpresaService;
@@ -46,7 +48,9 @@ public class VagaController implements Controllers<VagaDTO>{
 	}
 	
 	private VagaDTO setarIdEmpresa(VagaDTO vaga) {
-		vaga.setIdEmpresa(empresaService.findByVaga(vaga.getId()).getId());
+		EmpresaDTO empresa =  empresaService.findByVaga(vaga.getId());
+		vaga.setIdEmpresa(empresa.getId());
+		vaga.setCidade(empresa.getCidade().getNome());
 		return vaga;
 	}
 	
