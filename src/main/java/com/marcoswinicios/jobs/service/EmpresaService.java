@@ -2,6 +2,8 @@ package com.marcoswinicios.jobs.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,20 +30,18 @@ public class EmpresaService implements Services<EmpresaDTO> {
 	public EmpresaDTO findById(Long id) {
 		Optional<Empresa> empresa = repository.findById(id);
 		if(empresa.isPresent()) {
-			
 			return new EmpresaDTO(empresa.get());
 		}
 		return null;
 	}
 	
-//	public EmpresaDTO findById(Long id) {
-//		Optional<Empresa> empresa = repository.findById(id);
-//		Empresa e = Empresa.class empresa;
-//		if(empresa.isPresent()) {
-//			EmpresaDTO empresaDTO = new EmpresaDTO();
-//			
-//		}
-//	}
+	@Transactional
+	public EmpresaDTO findByVaga(Long idVaga) {
+		Empresa empresa = repository.findByVaga(idVaga);
+		return new EmpresaDTO(empresa);
+	}
+	
+
 //	public List<EmpresaDTO> listarTodas() {
 //		List<EmpresaDTO> empresas = new ArrayList<>();
 //		Cidade cidade = new Cidade("São Paulo", "SP");
