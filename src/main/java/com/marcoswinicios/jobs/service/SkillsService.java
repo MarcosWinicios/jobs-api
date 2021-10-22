@@ -12,6 +12,8 @@ import com.marcoswinicios.jobs.repository.SkillRepository;
 @Service
 public class SkillsService {
 	
+	
+
 	@Autowired
 	private SkillRepository repository;
 	

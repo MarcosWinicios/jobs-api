@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marcoswinicios.jobs.dto.CidadeDTO;
-import com.marcoswinicios.jobs.entidades.Cidade;
 import com.marcoswinicios.jobs.service.CidadeService;
 
 @RestController
