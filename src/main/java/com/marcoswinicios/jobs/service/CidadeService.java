@@ -1,11 +1,7 @@
 package com.marcoswinicios.jobs.service;
 
-import java.awt.print.Pageable;
-import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +28,12 @@ public class CidadeService{
 
 	public Page<CidadeDTO> findAll(org.springframework.data.domain.Pageable pageable) {
 		Page<Cidade> result = repository.findAll(pageable);
-		
-		return result.map(x -> new CidadeDTO());
+		for(Cidade c: result) {
+			System.out.println(c.getId());
+			System.out.println(c.getNome());
+			System.out.println(c.getEstado());
+		}
+		return result.map(x -> new CidadeDTO(x));
 	}
 
 	
