@@ -1,6 +1,5 @@
 package com.marcoswinicios.jobs.controller;
 
-import java.nio.file.Path;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.dto.VagaDTO;
-import com.marcoswinicios.jobs.entidades.Empresa;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.Vaga;
 import com.marcoswinicios.jobs.repository.SkillRepository;
 import com.marcoswinicios.jobs.repository.VagaRepository;
 import com.marcoswinicios.jobs.service.EmpresaService;
-import com.marcoswinicios.jobs.service.SkillsService;
 import com.marcoswinicios.jobs.service.VagaService;
 
 @RestController
@@ -66,8 +63,7 @@ public class VagaController implements Controllers<VagaDTO>{
 	
 	private VagaDTO setarIdEmpresa(VagaDTO vaga) {
 		EmpresaDTO empresa =  empresaService.findByVaga(vaga.getId());
-		vaga.setIdEmpresa(empresa.getId());
-		vaga.setCidade(empresa.getCidade().getNome());
+		vaga.setEmpresa(empresa);
 		return vaga;
 	}
 	

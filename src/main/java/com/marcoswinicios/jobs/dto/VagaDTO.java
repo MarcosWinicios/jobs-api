@@ -6,14 +6,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.marcoswinicios.jobs.entidades.Beneficio;
 import com.marcoswinicios.jobs.entidades.NivelExperiencia;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.TipoContrato;
 import com.marcoswinicios.jobs.entidades.Vaga;
-import com.marcoswinicios.jobs.service.EmpresaService;
 
 public class VagaDTO implements Serializable {
 	
@@ -33,8 +30,7 @@ public class VagaDTO implements Serializable {
 	private LocalDate dataCriacao;
 	private boolean ativa;
 	private List<Beneficio> beneficios;
-	private Long idEmpresa;
-	private String cidade;
+	private EmpresaDTO empresa;
 	
 	public VagaDTO() {}
 	
@@ -175,17 +171,10 @@ public class VagaDTO implements Serializable {
 	public void setBeneficios(List<Beneficio> beneficios) {
 		this.beneficios = beneficios;
 	}
-	public Long getIdEmpresa() {
-		return idEmpresa;
+	public EmpresaDTO getEmpresa() {
+		return empresa;
 	}
-	public void setIdEmpresa(Long idEmpresa) {
-		this.idEmpresa = idEmpresa;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setEmpresa(EmpresaDTO empresa) {
+		this.empresa = empresa;
 	}
 }
