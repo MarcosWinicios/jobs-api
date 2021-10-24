@@ -39,12 +39,7 @@ public class VagaService implements Services<VagaDTO> {
 	}
 
 	public Page<VagaDTO> findBySkill( Long idSkill, Pageable pageable){
-		System.out.println("ANTES DA CONSULTA");
-	
 		Page<Vaga> result = repository.findBySkill(idSkill, pageable);
-
-		System.out.println("DEPOIS DA CONSULTA");
-
 		return result.map(vaga -> new VagaDTO(vaga));
 	}
 
