@@ -1,3 +1,7 @@
+ALTER TABLE IF EXISTS tb_skill                                                   
+    add constraint UK_name_skill unique (nome);
+
+
 INSERT INTO tb_cidade (id, cidade, estado) VALUES(1, 'Remoto', 'Remoto');
 INSERT INTO tb_cidade (id, cidade, estado) VALUES(2, 'Goiânia', 'Goiás');
 INSERT INTO tb_cidade (id, cidade, estado)VALUES(3, 'Brasília', 'Distrito Federal');
