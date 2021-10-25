@@ -33,6 +33,8 @@ public class Empresa {
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 	
+
+	
 	@Column(name = "tamanho", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TamanhoEmpresa tamanho;

@@ -1,10 +1,12 @@
 package com.marcoswinicios.jobs.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.jaxb.SpringDataJaxb.PageDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.marcoswinicios.jobs.dto.EmpresaDTO;
 import com.marcoswinicios.jobs.dto.VagaDTO;
+import com.marcoswinicios.jobs.entidades.Cidade;
 import com.marcoswinicios.jobs.entidades.Skill;
 import com.marcoswinicios.jobs.entidades.Vaga;
+import com.marcoswinicios.jobs.repository.CidadeRepository;
 import com.marcoswinicios.jobs.repository.SkillRepository;
 import com.marcoswinicios.jobs.repository.VagaRepository;
+import com.marcoswinicios.jobs.service.CidadeService;
 import com.marcoswinicios.jobs.service.EmpresaService;
 import com.marcoswinicios.jobs.service.VagaService;
 
@@ -35,6 +40,9 @@ public class VagaController implements Controllers<VagaDTO>{
 	
 	@Autowired
 	private SkillRepository skillRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
 
 	@Override
 	public ResponseEntity<Page<VagaDTO>> findAll(Pageable page) {
@@ -59,7 +67,19 @@ public class VagaController implements Controllers<VagaDTO>{
 			return ResponseEntity.ok(list.map(vaga -> this.setarIdEmpresa(vaga)));
 		}
 		return ResponseEntity.notFound().build();
-	} 
+	}
+	
+	@GetMapping(value ="/jobs-city/{nomeCidade}")
+	public ResponseEntity<Page<VagaDTO>> findByCidade(@PathVariable String nomeCidade, Pageable pageable){
+		List<Cidade> cidades = cidadeRepository.findAll();
+		Long idCidade =  CidadeService.findIdByName(cidades, nomeCidade);
+		
+		if(idCidade != 0L) {
+			Page<VagaDTO> list = service.findByCidade(idCidade, pageable);
+			return ResponseEntity.ok(list.map(vaga -> this.setarIdEmpresa(vaga)));
+		}
+		return ResponseEntity.notFound().build();
+	}
 	
 	private VagaDTO setarIdEmpresa(VagaDTO vaga) {
 		EmpresaDTO empresa =  empresaService.findByVaga(vaga.getId());

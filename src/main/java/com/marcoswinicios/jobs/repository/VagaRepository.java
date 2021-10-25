@@ -16,4 +16,12 @@ public interface VagaRepository extends JpaRepository<Vaga, Long>{
 			+ "on s.id = vs.skill_id "
 			+ "where vs.skill_id = :idSkill", nativeQuery = true)
 	public Page<Vaga> findBySkill(Long idSkill, Pageable pageable);
+	
+	@Query(value = "select * from tb_vaga v "
+			+ "inner join tb_empresa e "
+			+ "on v.empresa_id = e.id "
+			+ "inner join tb_cidade c "
+			+ "on c.id = e.cidade_id "
+			+ "where c.id = :idCidade", nativeQuery = true)
+	public Page<Vaga> findByCidade(Pageable pageable, Long idCidade);
 }

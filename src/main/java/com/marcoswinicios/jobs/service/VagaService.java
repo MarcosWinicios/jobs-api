@@ -39,6 +39,11 @@ public class VagaService implements Services<VagaDTO> {
 		Page<Vaga> result = repository.findBySkill(idSkill, pageable);
 		return result.map(vaga -> new VagaDTO(vaga));
 	}
+	
+	public Page<VagaDTO> findByCidade(Long idCidade, Pageable pageable){
+		Page<Vaga> result = repository.findByCidade(pageable, idCidade);
+		return result.map(vaga -> new VagaDTO(vaga));
+	}
 
 
 public List<VagaDTO> listarTodas(){
