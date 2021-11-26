@@ -1,5 +1,6 @@
 package com.marcoswinicios.jobs.entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,8 +17,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_empresa")
-public class Empresa {
+public class Empresa implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

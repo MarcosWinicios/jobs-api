@@ -1,5 +1,6 @@
 package com.marcoswinicios.jobs.entidades;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +20,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_vaga")
-public class Vaga {
+public class Vaga implements Serializable {
+	
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
